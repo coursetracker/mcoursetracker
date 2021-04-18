@@ -1,9 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "a88a5e26-8aef-4a64-8089-193970fe502a"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "course-traker": {
+    "course-tracker": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/course-traker",
+            "outputPath": "dist/course-tracker",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,10 +31,12 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/bootstrap/scss/bootstrap.scss"
             ],
             "scripts": []
           },
@@ -61,25 +66,27 @@
                   "maximumWarning": "2kb",
                   "maximumError": "4kb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "./ngsw-config.json"
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "course-traker:build"
+            "browserTarget": "course-tracker:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "course-traker:build:production"
+              "browserTarget": "course-tracker:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "course-traker:build"
+            "browserTarget": "course-tracker:build"
           }
         },
         "test": {
@@ -91,7 +98,8 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.scss"
@@ -116,16 +124,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "course-traker:serve"
+            "devServerTarget": "course-tracker:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "course-traker:serve:production"
+              "devServerTarget": "course-tracker:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "course-traker"
+  "defaultProject": "course-tracker"
 }

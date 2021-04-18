@@ -1,0 +1,30 @@
+<div class="container-fluid mt-3">
+    <a class="text-decoration-none btn btn-secondary" [routerLink]="['/courses']"> back </a>
+    <h2 class="display-3 fw-normal" *ngIf="courses">{{courses.title}}</h2>
+</div>
+
+<div *ngIf="courses">
+    <div *ngFor="let _course of courses.modules" class="container-fluid">
+        <h3 class="display-5 mt-3"> {{_course.name}} </h3>
+        <div class="row row-cols-1 g-4">
+            <div class="col">
+
+                <div *ngFor="let _topics of _course.topics" class="card mb-2">
+                    <div class="card-body">
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" [checked]="isCompleted(_topics.code)"
+                                id="{{_topics.code}}">
+                            <label class="form-check-label ms-3" for="{{_topics.code}}">
+                                {{_topics.name}}
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>

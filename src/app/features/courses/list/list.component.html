@@ -1,0 +1,30 @@
+<div class="container-fluid mt-3">
+    <h2 class="display-3 fw-normal">Courses</h2>
+</div>
+
+<div *ngFor="let _course of courses" class="container-fluid">
+    <h3 class="display-5 mt-3"> {{_course.name}} </h3>
+    <div class="row row-cols-1 g-4">
+        <div class="col">
+            <div *ngFor="let _topics of _course.courses" class="card mb-2">
+                <div class="card-body">
+                    <div class="header d-flex flex-row align-items-center mb-2">
+                        <div class="me-2 rounded-2">
+                            <fa-icon [icon]="_bookIcon"></fa-icon>
+                        </div>
+                        <h2 class="fs-4 fw-normal"> {{_topics.title}} </h2>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                        <p class="m-0">
+                            No of Courses: {{ _topics.no_of_topics }}
+                        </p>
+                        <a [routerLink]="['/courses/'+_topics.id]" [queryParams]="{'code': _topics.code }"
+                            class="btn btn-primary ms-auto"> view </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
